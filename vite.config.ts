@@ -7,7 +7,8 @@ import { metaImagesPlugin } from "./vite-plugin-meta-images";
 
 export default defineConfig({
   // GitHub Pages repo adı: kresbabaokulu
-  base: "/kresbabaokulu/",
+  base: "/",
+
 
   plugins: [
     react(),
