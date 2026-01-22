@@ -1,10 +1,14 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path"; // EKLE
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 
 const app = express();
 const httpServer = createServer(app);
+
+// EKLE (registerRoutes'dan ÖNCE)
+app.use("/images", express.static(path.join(process.cwd(), "public/images")));
 
 declare module "http" {
   interface IncomingMessage {
@@ -75,9 +79,6 @@ app.use((req, res, next) => {
     return res.status(status).json({ message });
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {
@@ -85,33 +86,17 @@ app.use((req, res, next) => {
     await setupVite(httpServer, app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  // SADECE bu listen bloğunu değiştir
+  const port = parseInt(process.env.PORT || "5000", 10);
+  const host = process.platform === "win32" ? "127.0.0.1" : "0.0.0.0";
 
-const port = parseInt(process.env.PORT || "5000", 10);
-
-// Windows/PowerShell için 0.0.0.0 yerine localhost'a bind et
-const host = process.platform === "win32" ? "127.0.0.1" : "0.0.0.0";
-
-httpServer.listen(
-  {
-    port,
-    host,
-    // Windows'ta reusePort sorun çıkarabilir; kapat
-    ...(process.platform === "win32" ? {} : { reusePort: true }),
-  },
-  () => {
-    log(`serving on http://${host}:${port}`);
-  },
-);
-
-
-
-
-
-
-
+  httpServer.listen(
+    {
+      port,
+      host,
+      ...(process.platform === "win32" ? {} : { reusePort: true }),
+    },
+    () => {
+      log(`serving on http://${host}:${port}`);
+    },
+  );
 })();
