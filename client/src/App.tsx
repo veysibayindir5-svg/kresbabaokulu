@@ -224,32 +224,24 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* Gallery Section */}
-      <Section id="gallery" title="Mutlu Kareler">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center text-muted-foreground hover:bg-gray-200 transition-colors cursor-pointer group relative overflow-hidden shadow-sm">
-               <img 
-                 src={`/images/galeri${i}.jpg`} 
-                 alt={`Galeri Fotoğraf ${i}`}
-                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                 onError={(e) => {
-                   // Fallback if image doesn't exist
-                   (e.target as HTMLImageElement).style.display = 'none';
-                   const parent = (e.target as HTMLElement).parentElement;
-                   if (parent) {
-                     const span = document.createElement('span');
-                     span.className = 'font-hand text-xl relative z-10';
-                     span.innerText = `Fotoğraf ${i}`;
-                     parent.appendChild(span);
-                   }
-                 }}
-               />
-               <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-          ))}
-        </div>
-      </Section>
+   {/* Gallery Section */}
+<Section id="gallery" title="Mutlu Kareler">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {[1, 2, 3, 4].map((i) => (
+      <div
+        key={i}
+        className="aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm"
+      >
+        <img
+          src={`/images/galeri${i}.jpg`}
+          alt={`Galeri Fotoğraf ${i}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ))}
+  </div>
+</Section>
+
 
       {/* Contact Section */}
       <Section id="contact" title="İletişim">
