@@ -224,23 +224,45 @@ function HomePage() {
         </div>
       </Section>
 
-   {/* Gallery Section */}
+{/* Gallery Section */}
 <Section id="gallery" title="Mutlu Kareler">
   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-    {[1, 2, 3, 4].map((i) => (
-      <div
-        key={i}
-        className="aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm"
-      >
-        <img
-          src={`/images/galeri${i}.jpg`}
-          alt={`Galeri Fotoğraf ${i}`}
-          className="w-full h-full object-cover"
-        />
-      </div>
-    ))}
+
+    <div className="aspect-square rounded-2xl overflow-hidden shadow-sm">
+      <img
+        src="/images/galeri1.jpg"
+        alt="Galeri Fotoğraf 1"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="aspect-square rounded-2xl overflow-hidden shadow-sm">
+      <img
+        src="/images/galeri2.jpg"
+        alt="Galeri Fotoğraf 2"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="aspect-square rounded-2xl overflow-hidden shadow-sm">
+      <img
+        src="/images/galeri3.jpg"
+        alt="Galeri Fotoğraf 3"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="aspect-square rounded-2xl overflow-hidden shadow-sm">
+      <img
+        src="/images/galeri4.jpg"
+        alt="Galeri Fotoğraf 4"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
   </div>
 </Section>
+
 
 
       {/* Contact Section */}
