@@ -244,6 +244,7 @@ function HomePage() {
 
 
 
+
       {/* Contact Section */}
       <Section id="contact" title="İletişim">
         <div className="grid md:grid-cols-2 gap-8">
