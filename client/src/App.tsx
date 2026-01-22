@@ -227,19 +227,18 @@ function HomePage() {
 {/* Gallery Section */}
 <Section id="gallery" title="Mutlu Kareler">
   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-    {["galeri1.jpg","galeri2.jpg","galeri3.jpg","galeri4.jpg"].map((f, idx) => (
-      <div key={f} className="aspect-square rounded-2xl overflow-hidden shadow-sm bg-gray-100">
+    {[1, 2, 3, 4].map((i) => (
+      <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-sm">
         <img
-          src={`/images/${f}`}
-          alt={`Galeri Fotoğraf ${idx + 1}`}
+          src={`/images/galeri${i}.jpg`}
+          alt={`Galeri Fotoğraf ${i}`}
           className="w-full h-full object-cover"
-          onLoad={() => console.log("YÜKLENDİ:", `/images/${f}`)}
-          onError={() => console.log("HATA:", `/images/${f}`)}
         />
       </div>
     ))}
   </div>
 </Section>
+
 
 
 
